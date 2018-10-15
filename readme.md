@@ -1,3 +1,5 @@
+Sarah's edit for Assignment 2
+
 Crazy Pie Chart - edit
 ----------------------
 A [Pen](https://codepen.io/jakutagawa/pen/jeVwEE) by [jakutagawa](https://codepen.io/jakutagawa) on [CodePen](https://codepen.io).
