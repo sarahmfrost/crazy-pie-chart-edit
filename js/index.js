@@ -1,22 +1,33 @@
  // changed dataset
- var dataset = [1.2, 10, 5, 12, 1, 1, 3, 8, 1, 1];
+ var dataset = [5, 10, 5, 12, 5, 5, 5, 8, 10, 5];
 
  // let colors = ['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd'];
  // let colors = ['#67001f', '#b2182b', '#d6604d', '#f4a582', '#fddbc7', '#e0e0e0', '#bababa', '#878787', '#4d4d4d', '#1a1a1a'];
  // const colors = ['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b', '#e6f598', '#abdda4', '#66c2a5', '#3288bd', '#5e4fa2']
  var colors = [
-     "#3F6EB1",
-     "#3F5EB4",
-     "#3F4CB6",
-     "#443FB9",
-     "#573FBB",
-     "#6A3FBE",
+     "#FFC0CB",
+     "#FFB6C1",
+     "#FF69B4",
+     "#FF1493",
+     "#DB7093",
+     "#C71585",
      "#7F40C0",
      "#9341C1",
      "#A842C3",
      "#BC44C4"
  ];
-
+var labelList = [
+            "自営業",
+            "大学生",
+            "高校生",
+            "中学生",
+            "小学生",
+            "会社員",
+            "専門学生",
+            "浪人生",
+            "パート",
+            "主婦"
+];
 
  var width = document.querySelector(".chart-wrapper").offsetWidth;
  var height = document.querySelector(".chart-wrapper").offsetHeight;
@@ -31,7 +42,7 @@
 
  // calculate minimum of width and height to set chart radius
  if (minOfWH > 200) {
-     radius = 200;
+     radius = 300;
  } else {
      radius = minOfWH;
  }
@@ -57,14 +68,15 @@
  var arc = d3.svg.
  arc()
      //!! increase radius of outside
-     .outerRadius(radius * 0.8).
+     .outerRadius(radius * 0.9). // sarah changed
  innerRadius(radius * 0.45);
 
  // for labels and polylines
  var outerArc = d3.svg.
  arc().
- innerRadius(radius * 0.85).
- outerRadius(radius * 0.85);
+ innerRadius(radius * 1.1). // sarah changed
+ outerRadius(radius * .85); //sarah changed
+
 
  // d3 color generator
  // let c10 = d3.scale.category10();
@@ -137,7 +149,7 @@
          return colors[i];
      }).
      text(function(d, i) {
-         return colors[i];
+         return labelList[i];
      }).
      attr("transform", function(d) {
          // calculate outerArc centroid for 'this' slice
@@ -166,9 +178,9 @@
      append("polyline").
      style("opacity", 0.5).
      attr("points", function(d) {
-         var pos = outerArc.centroid(d);
-         pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
-         return [arc.centroid(d), arc.centroid(d), arc.centroid(d)];
+         //var pos = outerArc.centroid(d);
+//pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
+         //return [arc.centroid(d), arc.centroid(d), arc.centroid(d)];
      }).
      transition().
      duration(secDur).
