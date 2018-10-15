@@ -1,5 +1,8 @@
 Sarah's edit for Assignment 2
 
+I changed some style changes
+I added functionality for including section labels
+
 Crazy Pie Chart - edit
 ----------------------
 A [Pen](https://codepen.io/jakutagawa/pen/jeVwEE) by [jakutagawa](https://codepen.io/jakutagawa) on [CodePen](https://codepen.io).
